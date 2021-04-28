@@ -1,18 +1,23 @@
 [![Build Status](https://travis-ci.org/nicolaspanel/numjs.png)](https://travis-ci.org/nicolaspanel/numjs) [![npm version](https://badge.fury.io/js/numjs.svg)](https://badge.fury.io/js/numjs) [![Bower version](https://badge.fury.io/bo/numjs.svg)](https://badge.fury.io/bo/numjs) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.svg)](http://gruntjs.com/)
 
-__NumJs__ is a npm/bower package for scientific computing with JavaScript. It contains among other things:
- - a powerful N-dimensional array object
- - linear algebra function
- - fast Fourier transform
- - tools for basic image processing
+## update:
 
-Besides its obvious scientific uses, __NumJs__ can also be used as an efficient multi-dimensional container of generic data.
+update sharp
+
+**NumJs** is a npm/bower package for scientific computing with JavaScript. It contains among other things:
+
+- a powerful N-dimensional array object
+- linear algebra function
+- fast Fourier transform
+- tools for basic image processing
+
+Besides its obvious scientific uses, **NumJs** can also be used as an efficient multi-dimensional container of generic data.
 
 It works both in node.js and in the browser (with or without [browserify](http://browserify.org/))
 
-__NumJs__ is licensed under the [MIT license](https://github.com/nicolaspanel/numjs/blob/master/LICENSE), enabling reuse with almost no restrictions.
+**NumJs** is licensed under the [MIT license](https://github.com/nicolaspanel/numjs/blob/master/LICENSE), enabling reuse with almost no restrictions.
 
-__[See this jsfiddle](https://jsfiddle.net/nicolaspanel/047gwg0q/)__ for a concrete example of how to use the library to manipulate images in the browser.
+**[See this jsfiddle](https://jsfiddle.net/nicolaspanel/047gwg0q/)** for a concrete example of how to use the library to manipulate images in the browser.
 
 ## Installation
 
@@ -28,6 +33,7 @@ var nj = require('numjs');
 ```
 
 ### on the browser
+
 ```sh
 bower install numjs
 ```
@@ -52,7 +58,7 @@ array([[ 1, 2, 3],
        [ 4, 5, 6]])
 ```
 
-__Note__: Default data container is Javascript `Array` object. If needed, you can also use typed array such as `Uint8Array`:
+**Note**: Default data container is Javascript `Array` object. If needed, you can also use typed array such as `Uint8Array`:
 
 ```js
 > var a = nj.uint8([1,2,3]);
@@ -60,7 +66,7 @@ __Note__: Default data container is Javascript `Array` object. If needed, you ca
 array([ 1, 2, 3], dtype=uint8)
 ```
 
-__Note__: possible types are int8, uint8, int16, uint16, int32, uint32, float32, float64 and array (the default)
+**Note**: possible types are int8, uint8, int16, uint16, int32, uint32, float32, float64 and array (the default)
 
 To create arrays with a given shape, you can use `zeros`, `ones` or `random` functions:
 
@@ -83,7 +89,7 @@ array([[ 0.9182 , 0.85176, 0.22587],
        [ 0.00612, 0.37732, 0.06932]])
 ```
 
-To create sequences of numbers, __NumJs__ provides a function called `arange`:
+To create sequences of numbers, **NumJs** provides a function called `arange`:
 
 ```js
 > nj.arange(4);
@@ -98,16 +104,17 @@ array([ 1, 2, 3, 4], dtype=uint8)
 
 ### More info about the array
 
-__NumJs__’s array class is called `NdArray`. It is also known by the alias `array`. The more important properties of an `NdArray` object are:
- - `NdArray#ndim`: the number of axes (dimensions) of the array.
- - `NdArray#shape`: the dimensions of the array. This is a list of integers indicating the size of the array in each dimension. For a matrix with n rows and m columns, shape will be [n,m]. The length of the shape is therefore the number of dimensions, ndim.
- - `NdArray#size`: the total number of elements of the array. This is equal to the product of the elements of shape.
- - `NdArray#dtype`: a string describing the type of the elements in the array. `int32`, `int16`, and `float64` are some examples. Default dtype is `array`.
+**NumJs**’s array class is called `NdArray`. It is also known by the alias `array`. The more important properties of an `NdArray` object are:
+
+- `NdArray#ndim`: the number of axes (dimensions) of the array.
+- `NdArray#shape`: the dimensions of the array. This is a list of integers indicating the size of the array in each dimension. For a matrix with n rows and m columns, shape will be [n,m]. The length of the shape is therefore the number of dimensions, ndim.
+- `NdArray#size`: the total number of elements of the array. This is equal to the product of the elements of shape.
+- `NdArray#dtype`: a string describing the type of the elements in the array. `int32`, `int16`, and `float64` are some examples. Default dtype is `array`.
 
 An `NdArray` can always be converted to a native JavaScript `Array` using `NdArray#tolist()` method.
 
-
 Example:
+
 ```js
 > a = nj.arange(15).reshape(3, 5);
 array([[  0,  1,  2,  3,  4],
@@ -136,10 +143,11 @@ array([[  1,  1,  2,  3,  4],
 
 ### Printing arrays
 
-When you print an array, __NumJs__ displays it in a similar way to nested lists, but with the following layout:
- - the last axis is printed from left to right,
- - the second-to-last is printed from top to bottom,
- - the rest are also printed from top to bottom, with each slice separated from the next by an empty line.
+When you print an array, **NumJs** displays it in a similar way to nested lists, but with the following layout:
+
+- the last axis is printed from left to right,
+- the second-to-last is printed from top to bottom,
+- the rest are also printed from top to bottom, with each slice separated from the next by an empty line.
 
 One-dimensional arrays are then printed as rows, bidimensionals as matrices and tridimensionals as lists of matrices.
 
@@ -166,7 +174,7 @@ array([[[  0,  1,  2,  3],
 
 ```
 
-If an array is too large to be printed, __NumJs__ automatically skips the central part of the array and only prints the corners:
+If an array is too large to be printed, **NumJs** automatically skips the central part of the array and only prints the corners:
 
 ```js
 > console.log(nj.arange(10000).reshape(100,100))
@@ -178,6 +186,7 @@ array([[    0,    1, ...,   98,   99],
 ```
 
 To customize this behaviour, you can change the printing options using `nj.config.printThreshold` (default is `7`):
+
 ```js
 > nj.config.printThreshold = 9;
 > console.log(nj.arange(10000).reshape(100,100))
@@ -195,7 +204,8 @@ array([[    0,    1,    2,    3, ...,   96,   97,   98,   99],
 
 ### Indexing
 
-Single element indexing  uses `get` and `set` methods. It is 0-based, and accepts negative indices for indexing from the end of the array:
+Single element indexing uses `get` and `set` methods. It is 0-based, and accepts negative indices for indexing from the end of the array:
+
 ```js
 > var a = nj.array([0,1,2]);
 > a.get(1)
@@ -221,7 +231,6 @@ array([[ 1, 1, 2],
        [ 3, 4, 5],
        [ 6, 7, 8]])
 ```
-
 
 ### Slicing and Striding
 
@@ -334,8 +343,8 @@ array([[ 0, 0, 0, 0],
        [ 0, 1, 1, 0],
        [ 0, 0, 0, 0]])
 ```
-__Note__: available for `add`, `subtract`, `multiply`, `divide`, `assign` and `pow` methods.
 
+**Note**: available for `add`, `subtract`, `multiply`, `divide`, `assign` and `pow` methods.
 
 The matrix product can be performed using the `dot` function:
 
@@ -380,7 +389,8 @@ array([[0.62755, 0.8278,0.21384],
 ```
 
 ### Universal Functions
-__NumJs__ provides familiar mathematical functions such as `sin`, `cos`, and `exp`. These functions operate element-wise on an array, producing an `NdArray` as output:
+
+**NumJs** provides familiar mathematical functions such as `sin`, `cos`, and `exp`. These functions operate element-wise on an array, producing an `NdArray` as output:
 
 ```js
 > a = nj.array([-1, 0, 1])
@@ -424,6 +434,7 @@ array([-1, 0, 1])
 ```
 
 ### Shape Manipulation
+
 An array has a shape given by the number of elements along each axis:
 
 ```js
@@ -437,6 +448,7 @@ array([[  0,  1,  2,  3],
 ```
 
 The shape of an array can be changed with various commands:
+
 ```js
 > a.flatten();
 array([  0,  1,  2, ...,  9, 10, 11])
@@ -456,6 +468,7 @@ array([[  0,  1,  2],
 ```
 
 Since `a` is matrix we may want its diagonal:
+
 ```js
 > nj.diag(a)
 array([  0,  5, 10])
@@ -463,6 +476,7 @@ array([  0,  5, 10])
 ```
 
 ### Identity matrix
+
 The identity array is a square array with ones on the main diagonal:
 
 ```js
@@ -491,9 +505,10 @@ array([[  0,  1,  2,  3,  0],
        [  8,  9, 10, 11,  2]])
 ```
 
-__Notes__:
- - the arrays must have the same shape, except in the last dimension
- - arrays are concatenated along the last axis
+**Notes**:
+
+- the arrays must have the same shape, except in the last dimension
+- arrays are concatenated along the last axis
 
 It is still possible to concatenate along other dimensions using transpositions:
 
@@ -513,7 +528,6 @@ array([[  0,  1,  2,  3],
        [  0,  1,  2,  3]])
 ```
 
-
 ### Stack multiple arrays
 
 ```js
@@ -529,11 +543,13 @@ array([[1, 2],
        [3, 4]])
 ```
 
-__Notes__:
- - the arrays must have the same shape
- - take an optional axis argument which can be negative
+**Notes**:
+
+- the arrays must have the same shape
+- take an optional axis argument which can be negative
 
 ### Deep Copy
+
 The `clone` method makes a complete copy of the array and its data.
 
 ```js
@@ -562,9 +578,11 @@ array([[  0,  1,  2,  3],
 ```
 
 ### Fast Fourier Transform (FFT)
+
 `fft` and `ifft` functions can be used to compute the N-dimensional discrete Fourier Transform and its inverse.
 
 Example:
+
 ```js
 > RI = nj.concatenate(nj.ones([10,1]), nj.zeros([10,1]))
 array([[ 1, 0],
@@ -593,17 +611,17 @@ array([[ 1, 0],
        [ 1, 0],
        [ 1, 0]])
 ```
-__Note__: both `fft` and `ifft` expect last dimension of the array to contain 2 values: the real and the imaginary value
 
+**Note**: both `fft` and `ifft` expect last dimension of the array to contain 2 values: the real and the imaginary value
 
 ### Convolution
 
 `convolve` function compute the discrete, linear convolution of two multi-dimensional arrays.
 
-__Note__: The convolution product is only given for points where the signals overlap completely. Values outside the signal boundary have no effect. This behaviour is also known as the 'valid' mode.
-
+**Note**: The convolution product is only given for points where the signals overlap completely. Values outside the signal boundary have no effect. This behaviour is also known as the 'valid' mode.
 
 Example:
+
 ```js
 > x = nj.array([0,0,1,2,1,0,0])
 array([ 0, 0, 1, 2, 1, 0, 0])
@@ -628,11 +646,12 @@ array([[ 40, 40, 40],
        [ 40, 40, 40]])
 ```
 
-__Note__: `convolve` uses Fast Fourier Transform (FFT) to speed up computation on large arrays.
-
+**Note**: `convolve` uses Fast Fourier Transform (FFT) to speed up computation on large arrays.
 
 ### Other utils
+
 `rot90`
+
 ```js
 > m = nj.array([[1,2],[3,4]], 'int')
 > m
@@ -653,21 +672,23 @@ array([[[1, 3],
 ```
 
 `mod` (since v0.16.0)
+
 ```js
 > nj.mod(nj.arange(7), 5)
 > m
 array([0, 1, 2, 3, 4, 0, 1])
 ```
 
-
 ## Images manipulation
-__NumJs__’s comes with powerful functions for image processing. Theses function are located in `nj.images` module.
+
+**NumJs**’s comes with powerful functions for image processing. Theses function are located in `nj.images` module.
 
 The different color bands/channels are stored using the `NdArray` object such that a grey-image is `[H,W]`, an RGB-image is `[H,W,3]` and an RGBA-image is `[H,W,4]`.
 
 Use `nj.images.read`, `nj.images.write` and `nj.images.resize` functions to (respectively) read, write or resize images.
 
 Example:
+
 ```js
 > nj.config.printThreshold = 28;
 >
@@ -726,12 +747,11 @@ array([[   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],
 
 See also [this jsfiddle](https://jsfiddle.net/nicolaspanel/047gwg0q/) for more details on what is possible from the browser.
 
-
 ## More ?
+
 See documentation on [numjs globals](http://nicolaspanel.github.io/numjs/global.html) and
 [NdArray methods](http://nicolaspanel.github.io/numjs/NdArray.html).
 
-
-
 ## Credits
-__NumJs__ is built on top of [ndarray](http://scijs.net/packages/#scijs/ndarray) and uses many [scijs packages](http://scijs.net/packages/)
+
+**NumJs** is built on top of [ndarray](http://scijs.net/packages/#scijs/ndarray) and uses many [scijs packages](http://scijs.net/packages/)
