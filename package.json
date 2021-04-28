@@ -1,8 +1,8 @@
 {
   "name": "homfen_numjs",
-  "version": "0.16.0",
+  "version": "0.16.1",
   "description": "Like NumPy, in JavaScript",
-  "main": "dist/numjs.min.js",
+  "main": "dist/main.js",
   "directories": {
     "test": "test"
   },
@@ -14,6 +14,7 @@
     "ndarray-fft": "^1.0.0",
     "ndarray-gemm": "^1.0.0",
     "ndarray-ops": "^1.2.2",
+    "path-browserify": "^1.0.1",
     "sharp": "^0.25.2",
     "typedarray-pool": "^1.1.0"
   },
@@ -21,14 +22,6 @@
     "browserify-shim": "^3.8.12",
     "chai": "^3.5.0",
     "expect.js": "^0.3.1",
-    "grunt": "^1.0.1",
-    "grunt-browserify": "^5.0.0",
-    "grunt-contrib-uglify": "latest",
-    "grunt-gh-pages": "^2.0.0",
-    "grunt-jsdoc": "^1.1.0",
-    "grunt-karma": "^2.0.0",
-    "grunt-semistandard": "^1.0.6",
-    "grunt-simple-mocha": "^0.4.0",
     "ink-docstrap": "^1.1.1",
     "jasmine": "^2.2.1",
     "jasmine-core": "^2.2.0",
@@ -42,15 +35,15 @@
     "karma-phantomjs-launcher": "^1.0.0",
     "mocha": "^5.2.0",
     "phantomjs-prebuilt": "^2.1.7",
-    "semistandard": "^12.0.1"
+    "semistandard": "^12.0.1",
+    "webpack": "^5.36.0",
+    "webpack-cli": "^4.6.0"
   },
   "semistandard": {
     "globals": ["HTMLImageElement", "HTMLCanvasElement", "nj", "Image"]
   },
   "scripts": {
-    "test": "grunt test",
-    "preversion": "grunt test && git ci dist -m 'bump version' --allow-empty ",
-    "postversion": "npm publish && grunt doc"
+    "build": "rm -rf dist && webpack --mode production --config webpack.config.js"
   },
   "repository": {
     "type": "git",
